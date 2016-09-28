@@ -42,7 +42,8 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "classnames": "^2.2.0"
+    "classnames": "^2.2.0",
+    "react-keydown": "^1.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
