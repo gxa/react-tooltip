@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (e, target, node, place, effect, offset, countTransform) {
+exports.default = function (e, target, node, place, effect, offset) {
   var tipWidth = node.clientWidth;
   var tipHeight = node.clientHeight;
 
@@ -24,10 +24,10 @@ exports.default = function (e, target, node, place, effect, offset, countTransfo
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
 
-  var _ref = countTransform && getParent(target, countTransform) || { parentTop: 0, parentLeft: 0 };
+  var _getParent = getParent(node);
 
-  var parentTop = _ref.parentTop;
-  var parentLeft = _ref.parentLeft;
+  var parentTop = _getParent.parentTop;
+  var parentLeft = _getParent.parentLeft;
 
   // Get the edge offset of the tooltip
 
