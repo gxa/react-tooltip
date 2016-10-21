@@ -4,7 +4,6 @@ html, body {
   min-width: 1024px; }
 
 .tooltip-example {
-  background: #1182dd;
   height: 550px;
   position: relative; }
   .tooltip-example .title {
