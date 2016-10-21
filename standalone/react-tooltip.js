@@ -373,6 +373,17 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
 
     var _this = _possibleConstructorReturn(this, (ReactTooltip.__proto__ || Object.getPrototypeOf(ReactTooltip)).call(this, props));
 
+    _this.onClickOutsideFrozenTooltip = function (e) {
+      var _this$props = _this.props;
+      var frozen = _this$props.frozen;
+      var onClickOutside = _this$props.onClickOutside;
+      var currentTarget = _this.state.currentTarget;
+
+      if (frozen && onClickOutside && !_reactDom2.default.findDOMNode(_this).contains(e.target) && e.target !== currentTarget) {
+        onClickOutside();
+      }
+    };
+
     _this.state = {
       place: 'top', // Direction of tooltip
       type: 'dark', // Color theme of tooltip
@@ -516,6 +527,10 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
         window.removeEventListener(globalEventOff, this.hideTooltip);
         window.addEventListener(globalEventOff, this.hideTooltip, false);
       }
+
+      if (this.props.onClickOutside) {
+        window.addEventListener('click', this.onClickOutsideFrozenTooltip);
+      }
     }
 
     /**
@@ -538,6 +553,7 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
       });
 
       if (globalEventOff) window.removeEventListener(globalEventOff, this.hideTooltip);
+      window.removeEventListener('click', this.onClickOutsideFrozenTooltip);
     }
 
     /**
@@ -685,13 +701,13 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
         updateState();
       }
     }
+  }, {
+    key: 'hideTooltip',
+
 
     /**
      * When mouse leave, hide tooltip
      */
-
-  }, {
-    key: 'hideTooltip',
     value: function hideTooltip(e, hasTarget) {
       var _this7 = this;
 
@@ -856,6 +872,7 @@ var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.de
   afterHide: _react.PropTypes.func,
   disable: _react.PropTypes.bool,
   frozen: _react.PropTypes.bool,
+  onClickOutside: _react.PropTypes.func,
   scrollHide: _react.PropTypes.bool,
   resizeHide: _react.PropTypes.bool
 }, _class2.defaultProps = {
