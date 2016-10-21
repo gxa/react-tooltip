@@ -28,29 +28,31 @@ const Test = React.createClass({
         <section className='example-pre'>
           <div>
             <div className="example-jsx">
-              <div className="side"><a data-tip data-for='global'> σ`∀´)σ </a></div>
+              <div className="side" ><a data-tip data-for='global' onClick={this.togglefrozen}> σ`∀´)σ </a></div>
               <div className="side"><a data-tip data-for='global'> (〃∀〃) </a></div>
-              <ReactTooltip id='global' aria-haspopup="true" role="example" frozen={this.state.frozen}>
+              <ReactTooltip id='global' aria-haspopup="true" role="example" frozen={this.state.frozen} onClickOutside={this.togglefrozen}>
                 <p>This is a global react component tooltip</p>
                 <p>You can put every thing here</p>
                 <ul>
                   <li>Word</li>
                   <li>Chart</li>
+                  <a href="http://www.google.pl">a link</a>
                   <button onClick={()=>alert("Click!")}>{"Button"}</button>
                 </ul>
-                <p>Press f to freeze and unfreeze me</p>
+                <p>Click outside me to let me go</p>
               </ReactTooltip>
             </div>
             <pre className='example-pre'>
               <div>
-                <p>{"<a data-tip data-for='global'> σ`∀´)σ </a>\n" +
+                <p>{'<a data-tip data-for="global" onClick={this.togglefrozen}> σ`∀´)σ </a>\n' +
                   "<a data-tip data-for='global'> (〃∀〃) </a>\n" +
-                  "<ReactTooltip id='global' aria-haspopup='true' role='example'>\n" +
+                  '<ReactTooltip id="global" aria-haspopup="true" role="example" frozen={this.state.frozen} onClickOutside={this.togglefrozen}>\n' +
                     " <p>This is a global react component tooltip</p>\n" +
                     " <p>You can put every thing here</p>\n" +
                     " <ul>\n" +
                       " " + " " + " <li>Word</li>\n" +
                       " " + " " + " <li>Chart</li>\n" +
+                    '<a href="http://www.google.pl">a link</a> \n' +
                     '<button onClick={()=>alert("Click!")}>{"Button"}</button>'+
                     " </ul>\n" +
                     " <p>Press f to freeze and unfreeze me</p>"+
